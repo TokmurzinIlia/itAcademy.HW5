@@ -63,7 +63,9 @@ public class OnlinerTests {
 
         catalogPage.openCatalogPage()
                    .openComputersAndNetworks();
-
+        assertFalse(driver.findElement
+                (By.xpath("//div[@class=\"catalog-navigation-list__aside-title\"][text()=\" Ноутбуки, компьютеры, мониторы \"]"))
+                .isDisplayed());
 
 
 
