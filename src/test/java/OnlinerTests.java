@@ -56,25 +56,29 @@ public class OnlinerTests {
     }
 
 
-    @Test
-    public void checkCatalogSections(){
+    @ParameterizedTest(name = "{0}")
+    @CsvFileSource(resources = "/computersAndNetworks.txt")
+    public void checkComputersAndNetworksSections(String s){
 
         CatalogPage catalogPage = new CatalogPage(driver);
 
         catalogPage.openCatalogPage()
                    .openComputersAndNetworks();
-        assertFalse(driver.findElement
-                (By.xpath("//div[@class=\"catalog-navigation-list__aside-title\"][text()=\" Ноутбуки, компьютеры, мониторы \"]"))
-                .isDisplayed());
+        String locator = "//div[@class=\"catalog-navigation-list__aside-title\"][text()=\"" + s +  "\"]";
+        String name = driver.findElement(By.xpath(locator)).getText();
+        assertAll(
+                () -> assertTrue(driver.findElement(By.xpath(locator)).isDisplayed()),
+                () -> assertEquals(s, name)
+        );
 
 
 
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
 
     }
