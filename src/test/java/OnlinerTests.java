@@ -1,18 +1,22 @@
 
+import dataProvider.DaraProviderCheckComputersAndNetworksSections;
 import org.junit.jupiter.api.AfterAll;
 
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 
 
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
 import pages.CatalogPage;
 
 import utils.Driver;
 
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.Driver.driver;
@@ -57,7 +61,7 @@ public class OnlinerTests {
 
 
     @ParameterizedTest(name = "{0}")
-    @CsvFileSource(resources = "/computersAndNetworks.txt")
+    @ArgumentsSource(DaraProviderCheckComputersAndNetworksSections.class)
     public void checkComputersAndNetworksSections(String s){
 
         CatalogPage catalogPage = new CatalogPage(driver);
@@ -68,9 +72,15 @@ public class OnlinerTests {
         String name = driver.findElement(By.xpath(locator)).getText();
         assertAll(
                 () -> assertTrue(driver.findElement(By.xpath(locator)).isDisplayed()),
-                () -> assertEquals(s, name)
-        );
-
+                () -> assertEquals(s.replace(" ", ""), name.replace(" ", ""))
+        );}
+//        static Stream<String> DaraProviderCheckComputersAndNetworksSections () {
+//            return Stream.of(
+//                    " Ноутбуки, компьютеры, мониторы ",
+//                    " Комплектующие ",
+//                    " Хранение данных ",
+//                    " Сетевое оборудование ");
+//        }
 
 
 
@@ -82,4 +92,4 @@ public class OnlinerTests {
 
 
     }
-}
+//}
