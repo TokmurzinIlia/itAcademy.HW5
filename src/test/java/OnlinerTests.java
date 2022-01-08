@@ -11,12 +11,18 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.CatalogPage;
 
 import utils.Driver;
 
 
 import java.util.stream.Stream;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.Driver.driver;
@@ -29,7 +35,9 @@ public class OnlinerTests {
     @BeforeAll
     public static void getDriver() {
         Driver.getChromeDriver();
+
     }
+
 
 //    @AfterEach
 //    public void closeDriver(){
@@ -60,15 +68,16 @@ public class OnlinerTests {
     }
 
 
+
     @ParameterizedTest(name = "{0}")
     @ArgumentsSource(DaraProviderCheckComputersAndNetworksSections.class)
-    public void checkComputersAndNetworksSections(String s){
+    public void checkComputersAndNetworksSections(String s) {
 
         CatalogPage catalogPage = new CatalogPage(driver);
 
         catalogPage.openCatalogPage()
-                   .openComputersAndNetworks();
-        String locator = "//div[@class=\"catalog-navigation-list__aside-title\"][text()=\"" + s +  "\"]";
+                .openComputersAndNetworks();
+        String locator = "//div[@class=\"catalog-navigation-list__aside-title\"][text()=\"" + s + "\"]";
         String name = driver.findElement(By.xpath(locator)).getText();
         assertAll(
                 () -> assertTrue(driver.findElement(By.xpath(locator)).isDisplayed()),
@@ -81,8 +90,34 @@ public class OnlinerTests {
 //                    " Хранение данных ",
 //                    " Сетевое оборудование ");
 //        }
-
-
+    }
+//    @ParameterizedTest(name = "{0}")
+//    @CsvFileSource(resources = "/catalogSectionCheck.txt")
+//        public void testList(String s){
+//    CatalogPage catalogPage = new CatalogPage(driver);
+//
+//    catalogPage.openCatalogPage();
+//
+//    List<WebElement> elements = driver.findElements(By.cssSelector("ul[class=\"catalog-navigation-classifier \"]"));
+//
+//    //System.out.println("Number of elements:" +elements.size());
+//        ArrayList<String> sortedList = new ArrayList<>();
+//    for (int i=0; i<elements.size();i++){
+//
+//        sortedList.add(elements.get(i).getText());
+//    }
+//        ArrayList<String> list = new ArrayList<>();
+//        try {
+//            FileInputStream fileInputStream = new FileInputStream("catalogSectionCheck.txt");
+//            String string =null;
+//            while((string=fileInputStream.read()){
+//                System.out.print((char)i);
+//            }
+//            fin.close();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 //        try {
 //            Thread.sleep(5000);
@@ -91,5 +126,5 @@ public class OnlinerTests {
 //        }
 
 
-    }
+
 //}
