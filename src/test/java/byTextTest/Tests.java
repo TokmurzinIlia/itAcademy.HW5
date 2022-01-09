@@ -26,7 +26,7 @@ public class Tests {
     }
 
     @ParameterizedTest(name = "{0}")
-    @CsvFileSource(resources = "/catalogSectionCheckCollection.txt")
+    @CsvFileSource(resources = "/dataForTestFromCollection/catalogSectionCheckCollection.txt")
     public void testByText(String s){
 
         assertTrue(driver.findElement(new ByText(s)).isDisplayed());
