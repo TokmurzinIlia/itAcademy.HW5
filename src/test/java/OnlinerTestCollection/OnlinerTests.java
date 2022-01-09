@@ -2,13 +2,14 @@ package OnlinerTestCollection;
 
 
 import org.junit.jupiter.api.*;
+
 import pages.CatalogPage;
 import utils.Driver;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,7 +47,7 @@ public class OnlinerTests {
             .getTextElementFromCatalogSection();
 
 
-        List<String> expectedWebElementList = new ArrayList<>();
+        List<String> expectedWebElementList = null;
         try {
             expectedWebElementList = Files.lines(Paths.get("src/test/resources/catalogSectionCheckCollection.txt"),
                     StandardCharsets.UTF_8).collect(Collectors.toList());
@@ -66,7 +67,7 @@ public class OnlinerTests {
                 .getTextElementFromComputersAndNetworksSection();
 
 
-        List<String> expectedWebElementList = new ArrayList<>();
+        List<String> expectedWebElementList = null;
         try {
             expectedWebElementList = Files.lines(Paths.get("src/test/resources/computersAndNetworkCollection.txt"),
                     StandardCharsets.UTF_8).collect(Collectors.toList());
@@ -75,6 +76,27 @@ public class OnlinerTests {
         }
 
         assertEquals(actualWebElementList, expectedWebElementList);
+    }
+
+
+    @Test
+    public void checkElementComputersAndNetworksAccessoriesSection(){
+
+        List<String> actualWebElementList = new CatalogPage(driver).openCatalogPage()
+                .openComputersAndNetworks()
+                .openComputersAndNetworksSectionAccessories()
+                .getTextElementFromComputersAndNetworksAccessoriesSection();
+
+        List<String> expectedWebElementList = null;
+        try {
+            expectedWebElementList = Files.lines(Paths.get("src/test/resources/ComputersAndNetworksAccessoriesSection.txt"),
+                    StandardCharsets.UTF_8).collect(Collectors.toList());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        assertEquals(actualWebElementList,expectedWebElementList);
+
     }
 
 

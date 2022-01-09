@@ -4,19 +4,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static utils.Driver.driver;
 
 public class CatalogPage {
 
-    private By computersAndNetworksButton = By.xpath("//li[@data-id = '2']");
+    private final By computersAndNetworksButton = By.xpath("//li[@data-id = '2']");
 
-    private By catalogSectionElement = By.xpath("//span[@class='catalog-navigation-classifier__item-title-wrapper']");
+    private final By catalogSectionElement = By.xpath("//span[@class='catalog-navigation-classifier__item-title-wrapper']");
 
-    private By computersAndNetworksSectionElement = By.xpath("//div[@data-id=\"2\"]//div[@class=\"catalog-navigation-list__aside-title\"]");
+    private final By computersAndNetworksSectionElement = By.cssSelector("div[data-id=\"2\"] div.catalog-navigation-list__aside-title");
+
+    private final By computersAndNetworksSectionAccessoriesButton = By.xpath("//div[contains(text(),'Комплектующие')]");
+
+    private final By computersAndNetworksSectionAccessoriesElement = By.xpath("//div[contains(text(),'Комплектующие')]/.." +
+            "//span[@class=\"catalog-navigation-list__dropdown-data\"]");
 
     private WebDriver driver;
 
@@ -40,6 +44,13 @@ public class CatalogPage {
 
     }
 
+    public CatalogPage openComputersAndNetworksSectionAccessories(){
+
+        driver.findElement(computersAndNetworksSectionAccessoriesButton).click();
+        return new CatalogPage(driver);
+
+    }
+
     public List<String> getTextElementFromCatalogSection(){
 
 
@@ -51,6 +62,12 @@ public class CatalogPage {
 
         return driver.findElements(computersAndNetworksSectionElement)
                      .stream().map(WebElement::getText).collect(Collectors.toList());
+    }
+
+    public List<String> getTextElementFromComputersAndNetworksAccessoriesSection(){
+
+        return driver.findElements(computersAndNetworksSectionAccessoriesElement)
+                     .stream().map(WebElement::getText).map((s) ->s.replace("\n", " ")).collect(Collectors.toList());
     }
 
 }
