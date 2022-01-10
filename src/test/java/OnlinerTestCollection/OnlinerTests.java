@@ -30,13 +30,13 @@ public class OnlinerTests {
 
     @AfterEach
     public void closeDriver(){
-        driver.close();
-    }
-
-    @AfterAll
-    public static void quitDriver(){
         driver.quit();
     }
+
+//    @AfterAll
+//    public static void quitDriver(){
+//        driver.quit();
+//    }
 
     @Order(1)
     @Test
