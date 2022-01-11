@@ -3,6 +3,8 @@ package OnlinerTestCollection;
 
 import org.junit.jupiter.api.*;
 
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import pages.CatalogPage;
 import utils.chromeDriwer.Driver;
 import utils.readFile.ReadFile;
@@ -36,22 +38,24 @@ public class OnlinerTests {
 //    }
 
     @Order(1)
-    @Test
-    public void checkElementCatalogSection(){
+    @ParameterizedTest(name = "Data from file catalogSectionCheckCollection.txt")
+    @ValueSource(strings = "src/test/resources/dataForTestFromCollection/catalogSectionCheckCollection.txt")
+    public void checkElementCatalogSection(String fileName){
 
         List<String> actualWebElementList = new CatalogPage(driver)
                 .openCatalogPage()
                 .getTextElementFromCatalogSection();
 
         List<String> expectedWebElementList = ReadFile
-                .readFile("src/test/resources/dataForTestFromCollection/catalogSectionCheckCollection.txt");
+                .readFile(fileName);
 
         assertEquals(expectedWebElementList, actualWebElementList);
     }
 
     @Order(2)
-    @Test
-    public void checkElementComputersAndNetworksSections(){
+    @ParameterizedTest(name = "Data from file computersAndNetworkCollection.txt")
+    @ValueSource(strings = "src/test/resources/dataForTestFromCollection/computersAndNetworkCollection.txt")
+    public void checkElementComputersAndNetworksSections(String fileName){
 
         List<String> actualWebElementList = new CatalogPage(driver)
                 .openCatalogPage()
@@ -59,14 +63,15 @@ public class OnlinerTests {
                 .getTextElementFromComputersAndNetworksSection();
 
         List<String> expectedWebElementList = ReadFile
-                .readFile("src/test/resources/dataForTestFromCollection/computersAndNetworkCollection.txt");
+                .readFile(fileName);
 
         assertEquals(expectedWebElementList, actualWebElementList);
     }
 
     @Order(3)
-    @Test
-    public void checkElementComputersAndNetworksAccessoriesSection(){
+    @ParameterizedTest(name = "Data from file ComputersAndNetworksAccessoriesSection.txt")
+    @ValueSource(strings = "src/test/resources/dataForTestFromCollection/ComputersAndNetworksAccessoriesSection.txt")
+    public void checkElementComputersAndNetworksAccessoriesSection(String fileName){
 
         List<String> actualWebElementList = new CatalogPage(driver).openCatalogPage()
                 .openComputersAndNetworks()
@@ -74,7 +79,7 @@ public class OnlinerTests {
                 .getTextElementFromComputersAndNetworksAccessoriesSection();
 
         List<String> expectedWebElementList = ReadFile
-                .readFile("src/test/resources/dataForTestFromCollection/ComputersAndNetworksAccessoriesSection.txt");
+                .readFile(fileName);
 
         assertEquals(expectedWebElementList, actualWebElementList);
 
