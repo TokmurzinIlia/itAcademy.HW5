@@ -5,11 +5,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import pages.CatalogPage;
-import utils.ByText;
-import utils.Driver;
+import utils.byText.ByText;
+import utils.chromeDriwer.Driver;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static utils.Driver.driver;
+import static utils.chromeDriwer.Driver.driver;
 
 public class Tests {
     @BeforeAll
@@ -30,7 +30,6 @@ public class Tests {
     public void testByText(String s){
 
         assertTrue(driver.findElement(new ByText(s)).isDisplayed());
-
 
     }
 }

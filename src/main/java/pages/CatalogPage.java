@@ -55,19 +55,25 @@ public class CatalogPage {
 
 
         return driver.findElements(catalogSectionElement)
-                     .stream().map(WebElement::getText).collect(Collectors.toList());
+                     .stream()
+                     .map(WebElement::getText)
+                     .collect(Collectors.toList());
     }
 
     public List<String> getTextElementFromComputersAndNetworksSection(){
 
         return driver.findElements(computersAndNetworksSectionElement)
-                     .stream().map(WebElement::getText).collect(Collectors.toList());
+                     .stream().map(WebElement::getText)
+                     .collect(Collectors.toList());
     }
 
     public List<String> getTextElementFromComputersAndNetworksAccessoriesSection(){
 
         return driver.findElements(computersAndNetworksSectionAccessoriesElement)
-                     .stream().map(WebElement::getText).map((s) ->s.replace("\n", " ")).collect(Collectors.toList());
+                     .stream()
+                     .map(WebElement::getText)
+                     .map((s) ->s.replace("\n", " "))
+                     .collect(Collectors.toList());
     }
 
 }

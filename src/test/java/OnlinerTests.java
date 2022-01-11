@@ -9,23 +9,14 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import pages.CatalogPage;
 
-import utils.Driver;
+import utils.chromeDriwer.Driver;
 
-
-import java.util.stream.Stream;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static utils.Driver.driver;
+import static utils.chromeDriwer.Driver.driver;
 
 
 public class OnlinerTests {

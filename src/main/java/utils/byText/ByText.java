@@ -1,4 +1,4 @@
-package utils;
+package utils.byText;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Quotes;
@@ -7,7 +7,7 @@ import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import static utils.Xpath.NORMALIZE_SPACE_XPATH;
+import static utils.byText.Xpath.NORMALIZE_SPACE_XPATH;
 
 @ParametersAreNonnullByDefault
 public class ByText extends By.ByXPath {

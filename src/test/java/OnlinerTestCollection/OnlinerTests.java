@@ -4,17 +4,14 @@ package OnlinerTestCollection;
 import org.junit.jupiter.api.*;
 
 import pages.CatalogPage;
-import utils.Driver;
+import utils.chromeDriwer.Driver;
+import utils.readFile.ReadFile;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 import static org.junit.jupiter.api.Assertions.*;
-import static utils.Driver.driver;
+import static utils.chromeDriwer.Driver.driver;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
@@ -43,17 +40,11 @@ public class OnlinerTests {
     public void checkElementCatalogSection(){
 
         List<String> actualWebElementList = new CatalogPage(driver)
-            .openCatalogPage()
-            .getTextElementFromCatalogSection();
+                .openCatalogPage()
+                .getTextElementFromCatalogSection();
 
-
-        List<String> expectedWebElementList = null;
-        try {
-            expectedWebElementList = Files.lines(Paths.get("src/test/resources/dataForTestFromCollection/catalogSectionCheckCollection.txt"),
-                    StandardCharsets.UTF_8).collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        List<String> expectedWebElementList = ReadFile
+                .readFile("src/test/resources/dataForTestFromCollection/catalogSectionCheckCollection.txt");
 
         assertEquals(expectedWebElementList, actualWebElementList);
     }
@@ -67,14 +58,8 @@ public class OnlinerTests {
                 .openComputersAndNetworks()
                 .getTextElementFromComputersAndNetworksSection();
 
-
-        List<String> expectedWebElementList = null;
-        try {
-            expectedWebElementList = Files.lines(Paths.get("src/test/resources/dataForTestFromCollection/computersAndNetworkCollection.txt"),
-                    StandardCharsets.UTF_8).collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        List<String> expectedWebElementList = ReadFile
+                .readFile("src/test/resources/dataForTestFromCollection/computersAndNetworkCollection.txt");
 
         assertEquals(expectedWebElementList, actualWebElementList);
     }
@@ -88,13 +73,8 @@ public class OnlinerTests {
                 .openComputersAndNetworksSectionAccessories()
                 .getTextElementFromComputersAndNetworksAccessoriesSection();
 
-        List<String> expectedWebElementList = null;
-        try {
-            expectedWebElementList = Files.lines(Paths.get("src/test/resources/dataForTestFromCollection/ComputersAndNetworksAccessoriesSection.txt"),
-                    StandardCharsets.UTF_8).collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        List<String> expectedWebElementList = ReadFile
+                .readFile("src/test/resources/dataForTestFromCollection/ComputersAndNetworksAccessoriesSection.txt");
 
         assertEquals(expectedWebElementList, actualWebElementList);
 
