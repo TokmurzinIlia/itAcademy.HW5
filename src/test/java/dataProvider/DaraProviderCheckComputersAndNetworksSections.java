@@ -12,9 +12,15 @@ public class DaraProviderCheckComputersAndNetworksSections implements ArgumentsP
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
         return Stream.of(
-                " Ноутбуки, компьютеры, мониторы ",
-                " Комплектующие ",
-                " Хранение данных ",
-                " Сетевое оборудование ").map(Arguments::of);
+                "Ноутбуки, компьютеры, мониторы",
+                "Комплектующие",
+                "Техника для печати и дизайна",
+                "Манипуляторы и устройства ввода",
+                "Хранение данных",
+                "Мультимедиа периферия",
+                "Сетевое оборудование",
+                "Аксессуары к ноутбукам и компьютерам",
+                "Электропитание",
+                "Игры и программное обеспечение").map(Arguments::of);
     }
 }

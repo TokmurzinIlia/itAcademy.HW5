@@ -63,7 +63,8 @@ public class CatalogPage {
     public List<String> getTextElementFromComputersAndNetworksSection(){
 
         return driver.findElements(computersAndNetworksSectionElement)
-                     .stream().map(WebElement::getText)
+                     .stream()
+                     .map(WebElement::getText)
                      .collect(Collectors.toList());
     }
 

@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.CatalogPage;
 import utils.chromeDriwer.Driver;
+import utils.chromeDriwer.MobileDriverChrome;
 import utils.readFile.ReadFile;
 
 import java.util.List;
