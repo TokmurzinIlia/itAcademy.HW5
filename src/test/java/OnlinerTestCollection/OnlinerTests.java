@@ -69,8 +69,8 @@ public class OnlinerTests {
     }
 
     @Order(3)
-    @ParameterizedTest(name = "Data from file ComputersAndNetworksAccessoriesSection.txt")
-    @ValueSource(strings = "src/test/resources/dataForTestFromCollection/ComputersAndNetworksAccessoriesSection.txt")
+    @ParameterizedTest(name = "Data from file computersAndNetworksAccessoriesSection.txt")
+    @ValueSource(strings = "src/test/resources/dataForTestFromCollection/computersAndNetworksAccessoriesSection.txt")
     public void checkElementComputersAndNetworksAccessoriesSection(String fileName){
 
         List<String> actualWebElementList = new CatalogPage(driver).openCatalogPage()

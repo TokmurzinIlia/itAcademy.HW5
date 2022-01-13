@@ -6,10 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import pages.CatalogPage;
 import utils.byText.ByText;
-import utils.byText.WithText;
 import utils.chromeDriwer.Driver;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static utils.chromeDriwer.Driver.driver;
 
