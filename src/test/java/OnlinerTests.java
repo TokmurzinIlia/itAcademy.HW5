@@ -1,5 +1,7 @@
 
 import dataProvider.DaraProviderCheckComputersAndNetworksSections;
+import dataProvider.DaraProviderCheckComputersAndNetworksSectionsElement;
+import dataProvider.DataProviderComputersAndNetworksAccessoriesSection;
 import org.junit.jupiter.api.AfterAll;
 
 
@@ -24,8 +26,8 @@ public class OnlinerTests {
 
 
 
-    @BeforeEach
-    public void getDriver() {
+    @BeforeAll
+    public static void getDriver() {
         Driver.getChromeDriver();
 
     }
@@ -62,19 +64,34 @@ public class OnlinerTests {
 
 
     @ParameterizedTest(name = "{0}")
-    @ArgumentsSource(DaraProviderCheckComputersAndNetworksSections.class)
+    @ArgumentsSource(DaraProviderCheckComputersAndNetworksSectionsElement.class)
     public void checkComputersAndNetworksSections(String s) {
 
         CatalogPage catalogPage = new CatalogPage(driver);
 
         catalogPage.openCatalogPage()
                 .openComputersAndNetworks();
-        String locator = "//div[@class=\"catalog-navigation-list__aside-title\"][text()=\"" + " " + s + " " + "\"]";
+        String locator = "//a[@href=\"https://catalog.onliner.by/"+ s + "\"]/../../..";
         String name = driver.findElement(By.xpath(locator)).getText();
         assertAll(
-                () -> assertTrue(driver.findElement(By.xpath(locator)).isDisplayed()),
-                () -> assertEquals(s.replace(" ", ""), name.replace(" ", ""))
+                () -> assertTrue(driver.findElement(By.xpath(locator)).isDisplayed())
+                //() -> assertEquals(s.replace(" ", ""), name.replace(" ", ""))
         );
+    }
+
+    @ParameterizedTest(name = "{0}")
+    @ArgumentsSource(DataProviderComputersAndNetworksAccessoriesSection.class)
+    public void checkElementCatalogSectionByText(String s){
+
+        assertAll(
+                () -> assertTrue(driver.findElement(By.xpath("//a[@href=\"https://catalog.onliner.by/"+ s + "\"]")).isDisplayed()),
+                () ->assertTrue(driver.findElement(By.xpath("//a[@href=\"https://catalog.onliner.by/"+
+                        s + "\"]//span[@class=\"catalog-navigation-list__dropdown-description\"]")).isDisplayed()),
+                () ->assertTrue(driver.findElement(By.xpath("//a[@href=\"https://catalog.onliner.by/"+
+                        s + "\"]//span[@class=\"catalog-navigation-list__dropdown-description\"]")).getText().contains("товар")),
+                () ->assertTrue(driver.findElement(By.xpath("//a[@href=\"https://catalog.onliner.by/"+
+                        s + "\"]//span[@class=\"catalog-navigation-list__dropdown-description\"]")).getText().contains("от")));
+
     }
 }
 
