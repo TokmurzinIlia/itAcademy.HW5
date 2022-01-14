@@ -17,10 +17,10 @@ public class DaraProviderCheckComputersAndNetworksSectionsElement implements Arg
                 "printers",
                 "mouse",
                 "ssd",
-                "sound",
+                "webcams",
                 "wrouter",
                 "notebookcase?bag_purpose%5B0%5D=type3&bag_purpose%5Boperation%5D=union",
                 "ups",
-                "pcgames").map(Arguments::of);
+                "gamemerch").map(Arguments::of);
     }
 }

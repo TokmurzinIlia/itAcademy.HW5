@@ -16,6 +16,7 @@ import org.openqa.selenium.By;
 import pages.CatalogPage;
 
 import utils.chromeDriwer.Driver;
+import utils.chromeDriwer.MobileDriverChrome;
 
 
 import static org.junit.jupiter.api.Assertions.*;
