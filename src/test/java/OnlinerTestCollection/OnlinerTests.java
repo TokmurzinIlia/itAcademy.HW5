@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.CatalogPage;
 import utils.chromeDriwer.Driver;
-import utils.chromeDriwer.MobileDriverChrome;
 import utils.readFile.ReadFile;
 
 import java.util.List;
@@ -24,18 +23,12 @@ public class OnlinerTests {
     @BeforeEach
     public void getDriver() {
         Driver.getChromeDriver();
-
     }
 
     @AfterEach
     public void closeDriver(){
         driver.quit();
     }
-
-//    @AfterAll
-//    public static void quitDriver(){
-//        driver.quit();
-//    }
 
     @Order(1)
     @ParameterizedTest(name = "Data from file catalogSectionCheckCollection.txt")

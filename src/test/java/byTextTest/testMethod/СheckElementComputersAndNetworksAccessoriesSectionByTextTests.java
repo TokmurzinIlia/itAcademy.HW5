@@ -1,12 +1,10 @@
 package byTextTest.testMethod;
 
-import dataProvider.DaraProviderCheckComputersAndNetworksSections;
 import dataProvider.DataProviderComputersAndNetworksAccessoriesSection;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
-import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.By;
 import pages.CatalogPage;
 import utils.chromeDriwer.Driver;

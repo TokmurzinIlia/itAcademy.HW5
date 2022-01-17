@@ -4,6 +4,7 @@ import dataProvider.DaraProviderCheckComputersAndNetworksSectionsElement;
 import dataProvider.DataProviderComputersAndNetworksAccessoriesSection;
 import org.junit.jupiter.api.AfterAll;
 
+
 import org.junit.jupiter.api.BeforeAll;
 
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,30 +12,21 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import pages.CatalogPage;
 import utils.chromeDriwer.MobileDriverChrome;
 import static org.junit.jupiter.api.Assertions.*;
-
+import static utils.chromeDriwer.MobileDriverChrome.driver;
 
 
 public class OnlinerTests {
 
-    private static WebDriver driver;
-
-
     @BeforeAll
-    public static void getDriver() {
-        driver = MobileDriverChrome.getChromeDriver();
+    public  static void getDriver() {
+        MobileDriverChrome.getChromeDriver();
 
 
     }
 
-
-//    @AfterEach
-//    public void closeDriver(){
-//        driver.close();
-//    }
 
     @AfterAll
     public static void quitDriver(){
@@ -70,11 +62,9 @@ public class OnlinerTests {
         catalogPage.openCatalogPage()
                 .openComputersAndNetworks();
         String locator = "//a[@href=\"https://catalog.onliner.by/"+ s + "\"]/../../..";
-        String name = driver.findElement(By.xpath(locator)).getText();
-        assertAll(
-                () -> assertTrue(driver.findElement(By.xpath(locator)).isDisplayed())
-                //() -> assertEquals(s.replace(" ", ""), name.replace(" ", ""))
-        );
+
+                assertTrue(driver.findElement(By.xpath(locator)).isDisplayed());
+
     }
 
     @ParameterizedTest(name = "{0}")
