@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MobileDriverChrome {
 
-    public static WebDriver driver;
+    private static WebDriver driver;
 
     private static void initializeChromeDriver() {
         WebDriverManager.chromedriver().setup();
