@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static utils.chromeDriwer.Driver.driver;
 
-public class СheckElementComputersAndNetworksAccessoriesSectionByText {
+public class СheckElementComputersAndNetworksAccessoriesSectionByTextTests {
 
     @BeforeAll
     public static void getParam(){
